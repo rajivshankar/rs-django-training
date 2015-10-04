@@ -1,0 +1,14 @@
+*.py[co]
+*.sw[po]
+*.bak
+*.orig
+*.xmi
+*~
+.project
+.pydevproject
+git-upload.bat
+/exercises/local_settings.py
+/exercises/static/
+/exercises/media/
+/.metadata/
+/.settings/
