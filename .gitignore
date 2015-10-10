@@ -6,7 +6,6 @@
 *~
 .project
 .pydevproject
-git-upload.bat
 /exercises/local_settings.py
 /exercises/static/
 /exercises/media/

@@ -124,6 +124,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/%s/' % get_git_changeset(PROJECT_PATH)
 
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = (
+             ("en", u"English"),
+             ("de", u"Deutsche"),
+             ("fr", u"Francaise"),             
+)
+
+######### The following section should be at the end of this file #########
+
 try:
     execfile(os.path.join(APP_DIR, "local_settings.py"))
 except IOError:

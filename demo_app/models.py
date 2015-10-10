@@ -7,11 +7,25 @@ from django.core.urlresolvers import reverse
 
 from utils.models import UrlMixin
 from utils.models import object_relation_mixin_factory
+from utils.fields import MultilingualCharField
+from utils.fields import MultilingualTextField
 
 class Idea(UrlMixin):
-    title = models.CharField(_("Title"),
+    title = MultilingualCharField(
+                            _("Title"),
                              max_length=200
-                             )
+    )
+    description = MultilingualTextField(
+                            _("Description"),
+                            blank=True,
+    )
+    
+    class Meta:
+        verbose_name = _("Idea")
+        verbose_name_plural = _("Ideas")
+    
+    def __unicode__(self):
+        return self.title
     #...
     def get_url_path(self):
         return reverse(
