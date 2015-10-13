@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import escape
 from django.utils.safestring import mark_safe
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes import fields # removed 'generic'
 from django.core.exceptions import FieldError
 
 class UrlMixin(models.Model):
@@ -227,8 +227,7 @@ def object_relation_mixin_factory(
     object_id.limit_choices_to = limit_object_choices_to
     #can be retrieved by
     #Mymodel._meta.get_field("objectid").limit_choices_to
-    
-    content_object = generic.GenericForeignKey(
+    content_object = fields.GenericForeignKey(
                             ct_field=content_type_field,
                             fk_field=object_id_field,
                             )
