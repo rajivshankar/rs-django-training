@@ -57,6 +57,7 @@ INSTALLED_APPS = (
 
     'myapp1',
     'polls',
+    'ex_models',
 )
 
 MIDDLEWARE_CLASSES = (
