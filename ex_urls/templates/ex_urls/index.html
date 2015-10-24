@@ -1,0 +1,7 @@
+<ul>
+{% for year in year_list %}
+    <li><a href="{% url 'urls:news-year-archive' year %}">{{ year }} Archive</a></li>
+{% endfor %}
+</ul>
+<p></p>
+<!--<a href="{% url 'urls:news-year-archive' 2012 %}">2012 Archive</a>-->

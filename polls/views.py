@@ -3,7 +3,8 @@
 
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from django.http.response import HttpResponseRedirect
+from django.http import HttpResponseRedirect
+from django.http import Http404
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils import timezone
@@ -14,6 +15,7 @@ from django.utils import timezone
 
 from .models import Choice
 from .models import Question
+from django.template.context_processors import request
 
 # def index (request):
 #     latest_question_list = Question.objects.order_by('-pub_date')[:5]
@@ -21,6 +23,8 @@ from .models import Question
 #     output = ', '.join([p.question_text for p in latest_question_list])
 #     context = {'latest_question_list': latest_question_list}
 #     return render(request, 'polls/index.html', context)
+def test_404(request):
+    raise Http404("Poll Not found Testing")
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'

@@ -2,7 +2,6 @@
 # -*- CODING: utf-8 -*-
 
 from django.conf.urls import url
-
 from . import views
 
 urlpatterns = [
@@ -22,4 +21,8 @@ urlpatterns = [
                   views.vote,
                   name = 'vote'
                 ), # ex: /polls/5/vote/
+              url(r'^test-404/$',
+                  views.test_404,
+                  name = 'test-404'
+                ),
             ]

@@ -17,6 +17,19 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-              url(r'^polls/', include('polls.urls', namespace='polls')),
+              url(r'^author-polls/', include('polls.urls', 
+                                      namespace='author-polls',
+                                      app_name='polls',
+                                      )
+                  ),
+               url(r'^publisher-polls', include('polls.urls',
+                                                 namespace='publisher-polls',
+                                                 app_name='polls'
+                                                 )
+                  ),
               url(r'^admin/', include(admin.site.urls)),
+              url(r'^urls/', include('ex_urls.urls',
+                                      namespace='urls', 
+                                      app_name='urls')
+                  ),
 ]
