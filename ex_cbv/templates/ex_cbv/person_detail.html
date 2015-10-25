@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+<h1>Person Detail</h1>
+<table>
+    <tr>
+        <td>Name:</td><td>{{ person_detail.name }}</td>
+        <td> (<a href="{% url 'cbv:person_update' person_detail.id %}">modify</a>)</td>
+        <td> (<a href="{% url 'cbv:person_delete' person_detail.id %}">delete</a>)</td>
+    </tr>
+</table>
+<p><a href="{% url 'cbv:person_list' %}">All People</a></p>
+</body>

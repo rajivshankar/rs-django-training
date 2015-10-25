@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+{% if book_list%}
+    <h1>Books List</h1>
+    <ul>
+    {% for book in book_list %}
+        <li><a href="{% url 'cbv:book_detail' book.id %}">{{ book.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Books Exists!</p>
+{% endif %}
+</body>

@@ -56,11 +56,15 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'myapp1',
+    'utils',
     'polls',
     'ex_models',
     'ex_queries',
     'ex_aggregation',
     'ex_urls',
+    'ex_file_upload',
+    'ex_cbv',
+    'ex_cbv_mixins',
 )
 
 MIDDLEWARE_CLASSES = (

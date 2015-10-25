@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+{% if preferred_authors%}
+    <h1>Author List</h1>
+    <ul>
+    {% for author in preferred_authors %}
+        <li><a href="{% url 'cbv:author_detail' author.id %}">{{ author.salutation }} {{ author.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Author Exists!</p>
+{% endif %}
+</body>

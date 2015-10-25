@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+{% if my_favourite_publishers %}
+    <h1>Publisher List</h1>
+    <ul>
+    {% for pub in my_favourite_publishers %}
+        <li><a href="{% url 'cbv:publisher_detail' pub.id %}">{{ pub.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Publisher Exists!</p>
+{% endif %}
+</body>

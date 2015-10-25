@@ -1,0 +1,8 @@
+<h1> File Upload Form</h1>
+<form action="{% url 'file_upload:upload' %}" enctype="multipart/form-data" method="post">
+{% csrf_token %}
+<table>
+{{ form.as_table }}
+</table>
+<input type="submit" value="Submit"/>
+</form>

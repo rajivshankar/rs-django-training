@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+<h1>Confirm Delete</h1>
+<table>
+    <tr>
+        <td>Name:</td><td>{{ person_detail.name }}</td>
+    </tr>
+</table>
+<form action="{% url 'cbv:person_delete' person_detail.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+<input type="submit" value="Delete"/>
+</body>
