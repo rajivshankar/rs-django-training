@@ -54,6 +54,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize', # humanize in templates
 
     'myapp1',
     'utils',
@@ -65,6 +66,7 @@ INSTALLED_APPS = (
     'ex_file_upload',
     'ex_cbv',
     'ex_cbv_mixins',
+    'ex_forms',
 )
 
 MIDDLEWARE_CLASSES = (

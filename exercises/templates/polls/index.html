@@ -1,15 +1,31 @@
-{% load staticfiles %}
+{% extends "base.html" %}
+{% load humanize %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
-
+{% block sidebar %}
+{{ block.super }}
+Inheritance
+{% endblock %}
+{% block content %}
 {% if latest_question_list %}
-    <ul>
+    <table>
     {% for question in latest_question_list %}
-        <li>
+    <tr class="{% cycle 'row1' 'row2' as rowcolours %}">
+        <td>>>> </td>            
+        <td>
         <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
-        </li>
+        <//td>
+    </tr>
     {% endfor %}
-    </ul>
+    </table>
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+<p>{{ 45000|intcomma }}</p>
+<p>It is {% now "jS F Y H:i:s" %}</p>
+{% widthratio 320 200 100 %}
+</p>{{ 1|add:2 }}
+</p>{{ 20|divisibleby:3 }}
+</p>{{ 2|divisibleby:2 }}
+</br>{{ "This is a test"|slugify }}
+</br>{{ "This is a test"|truncatechars:10 }}
+{% endblock %}

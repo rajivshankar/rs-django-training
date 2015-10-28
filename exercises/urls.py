@@ -44,4 +44,8 @@ urlpatterns = [
                                      namespace='cbv-mixins',
                                      app_name='ex_cbv_mixins')
                   ),
+              url(r'^forms/', include('ex_forms.urls',
+                                       namespace='forms',
+                                       app_name='ex-forms')
+                  ),
 ]
