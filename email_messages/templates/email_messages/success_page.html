@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block sidebar %}{% endblock %}
+{% block content %}
+    <h2>Successful Message</h2>
+    <a href="{% url 'email:message-to-user' %}">Back to Messages</a>
+{% endblock %}

@@ -3,6 +3,7 @@
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+from django.core.mail import send_mail
 from django.contrib.auth.models import User
 
 class MessageForm(forms.Form):
@@ -22,4 +23,12 @@ class MessageForm(forms.Form):
         self.request = request
         self.fields['recipient'].queryset = \
             self.fields['recipient'].queryset.\
-            exclude(ph=request.user.pk)
+            exclude(pk=request.user.pk)
+    
+    def save(self):
+        cleaned_data = self.cleaned_data
+        send_mail(subject=_("A message from %s" % self.request.user),
+                  message = cleaned_data['message'],
+                  from_email = self.request.user.email,
+                  recipient_list=[cleaned_data['recipient'].email],
+                  fail_silently=True)

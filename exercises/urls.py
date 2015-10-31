@@ -17,35 +17,39 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-              url(r'^polls/', include('polls.urls', 
-                                      namespace='polls',
-                                      app_name='polls',
-                                      )
-                  ),
+                url(r'^polls/', include('polls.urls', 
+                                        namespace='polls',
+                                        app_name='polls',
+                                        )
+                    ),
                 url(r'^publisher-polls/', include('polls.urls',
-                                                  namespace='publisher-polls',
-                                                  app_name='polls'
-                                                  )
-                   ),
-              url(r'^admin/', include(admin.site.urls)),
-              url(r'^urls/', include('ex_urls.urls',
-                                      namespace='urls', 
-                                      app_name='urls')
-                  ),
-              url(r'^file/', include('ex_file_upload.urls',
-                                      namespace='file_upload', 
-                                      app_name='ex_file_upload')
-                  ),
-              url(r'^cbv/', include('ex_cbv.urls',
-                                     namespace='cbv',
-                                     app_name='ex_cbv')
-                  ),
-              url(r'^cbv-mixins/', include('ex_cbv_mixins.urls',
-                                     namespace='cbv-mixins',
-                                     app_name='ex_cbv_mixins')
-                  ),
-              url(r'^forms/', include('ex_forms.urls',
+                                                    namespace='publisher-polls',
+                                                    app_name='polls'
+                                                    )
+                     ),
+                url(r'^admin/', include(admin.site.urls)),
+                url(r'^urls/', include('ex_urls.urls',
+                                        namespace='urls', 
+                                        app_name='urls')
+                    ),
+                url(r'^file/', include('ex_file_upload.urls',
+                                        namespace='file_upload', 
+                                        app_name='ex_file_upload')
+                    ),
+                url(r'^cbv/', include('ex_cbv.urls',
+                                       namespace='cbv',
+                                       app_name='ex_cbv')
+                    ),
+                url(r'^cbv-mixins/', include('ex_cbv_mixins.urls',
+                                       namespace='cbv-mixins',
+                                       app_name='ex_cbv_mixins')
+                    ),
+                url(r'^forms/', include('ex_forms.urls',
                                        namespace='forms',
-                                       app_name='ex-forms')
-                  ),
+                                       app_name='ex_forms')
+                    ),
+                url(r'^email/', include('email_messages.urls',
+                                       namespace='email',
+                                       app_name='email_messages')
+                    ),
 ]

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block sidebar %}{% endblock %}
+{% block content %}
+    <p>Contact Form</p>
+    <form action="{% url 'forms:contact-us' %}" method="post">
+        {% csrf_token %}
+        
+        {% include "form_template.html" with form=form %}
+
+        <input type="submit" value="Send">
+    </form>
+{% endblock %}

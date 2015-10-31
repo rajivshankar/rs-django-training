@@ -11,4 +11,13 @@ urlpatterns = [
                url(r'^success/$',
                    views.form_success,
                    name='forms-success'),
+               url(r'^contact-us/$',
+                   views.ContactFormView.as_view(),
+                   name='contact-us'),
+               url(r'^author/$',
+                   views.AuthorFormView.as_view(),
+                   name='author'),
+               url(r'^book/$',
+                   views.BookFormView.as_view(),
+                   name='book'),
                ]

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block sidebar %}{% endblock %}
+{% block content %}
+    <p>Author Form</p>
+    <form action="{% url 'forms:author' %}" method="post">
+        {% csrf_token %}
+        
+        {% include "form_template.html" with form=form %}
+
+        <input type="submit" value="Save">
+    </form>
+{% endblock %}

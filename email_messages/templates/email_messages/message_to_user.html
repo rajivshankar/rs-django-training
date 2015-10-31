@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block sidebar %}{% endblock %}
+{% block content %}
+    <h2>Message to User</h2>
+    <form action="{% url 'email:message-to-user' %}" method="post">
+        {% csrf_token %}
+        
+        {% include "form_template.html" with form=form %}
+
+        <input type="submit" value="Save">
+    </form>
+{% endblock %}

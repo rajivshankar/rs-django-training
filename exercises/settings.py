@@ -67,6 +67,7 @@ INSTALLED_APPS = (
     'ex_cbv',
     'ex_cbv_mixins',
     'ex_forms',
+    'email_messages',
 )
 
 MIDDLEWARE_CLASSES = (
