@@ -55,6 +55,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize', # humanize in templates
+    
+    'crispy_forms',
 
     'myapp1',
     'utils',
@@ -68,6 +70,8 @@ INSTALLED_APPS = (
     'ex_cbv_mixins',
     'ex_forms',
     'email_messages',
+    'quotes',
+    'bulletin_board',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -100,6 +104,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_TEMPLATE_PACK = "bootstrap3"
 
 WSGI_APPLICATION = 'exercises.wsgi.application'
 

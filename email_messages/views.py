@@ -2,9 +2,8 @@
 # -*- coding: UTF-8 -*-
 
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
 
 from .forms import MessageForm
 
@@ -14,7 +13,7 @@ def message_to_user(request):
         form = MessageForm(request, data=request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse("email:message-success"))
+            return redirect(reverse("email:message-success"))
     else:
         form = MessageForm(request)
         

@@ -23,9 +23,9 @@ urlpatterns = [
                                         )
                     ),
                 url(r'^publisher-polls/', include('polls.urls',
-                                                    namespace='publisher-polls',
-                                                    app_name='polls'
-                                                    )
+                                                namespace='publisher-polls',
+                                                app_name='polls'
+                                                )
                      ),
                 url(r'^admin/', include(admin.site.urls)),
                 url(r'^urls/', include('ex_urls.urls',
@@ -41,8 +41,8 @@ urlpatterns = [
                                        app_name='ex_cbv')
                     ),
                 url(r'^cbv-mixins/', include('ex_cbv_mixins.urls',
-                                       namespace='cbv-mixins',
-                                       app_name='ex_cbv_mixins')
+                                           namespace='cbv-mixins',
+                                           app_name='ex_cbv_mixins')
                     ),
                 url(r'^forms/', include('ex_forms.urls',
                                        namespace='forms',
@@ -52,4 +52,12 @@ urlpatterns = [
                                        namespace='email',
                                        app_name='email_messages')
                     ),
-]
+                url(r'^quotes/', include('quotes.urls',
+                                         namespace='quotes',
+                                         app_name='quotes')
+                    ),
+                url(r'^bulletin-board/', include('bulletin_board.urls',
+                                                 namespace='bulletin-board',
+                                                 app_name='bulletin_board')
+                    ),
+               ]
