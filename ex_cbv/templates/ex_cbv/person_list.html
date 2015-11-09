@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<head></head>
-<body>
-{% if person_list %}
-    <h1>Person List</h1>
-    <table>
-    {% for person in person_list %}
-    <tr>
-        <td><a href="{% url 'cbv:person_detail' person.id %}">{{ person.name }}</a></td>
-        <td>{{ person_detail.name }}</td>
-        <td> (<a href="{% url 'cbv:person_update' person.id %}">modify</a>)</td>
-        <td> (<a href="{% url 'cbv:person_delete' person.id %}">delete</a>)</td>
-    </tr>
-    {% endfor %}
-    </table>
-{% else %}
-    <p>No People Exist!</p>
-{% endif %}
-<p><a href="{% url 'cbv:person_create' %}">Add Person</a></p>
-</body>
+{% extends "base.html" %}
+{% block sidebar %}{% endblock %}
+{% block content %}
+    {% if person_list %}
+        <h1>Person List</h1>
+        <table>
+        {% for person in person_list %}
+        <tr>
+            <td><a href="{% url 'cbv:person_detail' person.id %}">{{ person.name }}</a></td>
+            <td>{{ person_detail.name }}</td>
+            <td> (<a href="{% url 'cbv:person_update' person.id %}">modify</a>)</td>
+            <td> (<a href="{% url 'cbv:person_delete' person.id %}">delete</a>)</td>
+        </tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <p>No People Exist!</p>
+    {% endif %}
+    <p><a href="{% url 'cbv:person_create' %}">Add Person</a></p>
+{% endblock %}

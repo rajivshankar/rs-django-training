@@ -1,6 +1,9 @@
-<!DOCTYPE html>
-<form action="{% url 'cbv:contactus' %}" method='post'>
-{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Contact Us"/>
-</form>
+{% extends "base.html" %}
+{% block sidebar %}{% endblock %}
+{% block content %}
+    <form action="{% url 'cbv:contactus' %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Contact Us"/>
+    </form>
+{% endblock %}

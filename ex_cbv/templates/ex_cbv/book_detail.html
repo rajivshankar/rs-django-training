@@ -1,23 +1,23 @@
-<!DOCTYPE html>
-<head></head>
-<body>
-<h1>Book Detail</h1>
-<table>
-    <tr><td>Title:</td><td>{{ selected_book.title }}</td></tr>
-    <tr><td>Publication Date:</td><td>{{ selected_book.publication_date|date }}</td></tr>
-    <tr><td>Publisher:</td><td><a href="{% url 'cbv:publisher_detail' selected_book.publisher.id %}" >{{ selected_book.publisher.name}}</a></td></tr>
-    {% if selected_book.authors %}
-        <tr>
-            <td>Authors:</td>
-            <td>
-            {% for author in selected_book.authors.all %}
-                <a href="{% url 'cbv:author_detail' author.id %}" >{{ author.name}}</a>
-            {% endfor %}
-            </td>
-        </tr>
-    {% else %}
-        <tr><td><p>No Authors</p></td></tr>
-    {% endif %}
-</table>
-<p><a href="{% url 'cbv:book_list' %}">Book List</a></p>
-</body>
+{% extends "base.html" %}
+{% block sidebar %}{% endblock %}
+{% block content %}
+    <h1>Book Detail</h1>
+    <table>
+        <tr><td>Title:</td><td>{{ selected_book.title }}</td></tr>
+        <tr><td>Publication Date:</td><td>{{ selected_book.publication_date|date }}</td></tr>
+        <tr><td>Publisher:</td><td><a href="{% url 'cbv:publisher_detail' selected_book.publisher.id %}" >{{ selected_book.publisher.name}}</a></td></tr>
+        {% if selected_book.authors %}
+            <tr>
+                <td>Authors:</td>
+                <td>
+                {% for author in selected_book.authors.all %}
+                    <a href="{% url 'cbv:author_detail' author.id %}" >{{ author.name}}</a>
+                {% endfor %}
+                </td>
+            </tr>
+        {% else %}
+            <tr><td><p>No Authors</p></td></tr>
+        {% endif %}
+    </table>
+    <p><a href="{% url 'cbv:book_list' %}">Book List</a></p>
+{% endblock %}

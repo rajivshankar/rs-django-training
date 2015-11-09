@@ -72,6 +72,7 @@ INSTALLED_APPS = (
     'email_messages',
     'quotes',
     'bulletin_board',
+    'movies',
 )
 
 MIDDLEWARE_CLASSES = (

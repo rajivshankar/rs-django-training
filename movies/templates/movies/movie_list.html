@@ -1,0 +1,47 @@
+{# templates/movies/movie_list.html #}
+{% load i18n utility_tags %}
+
+{% block sidebar %}
+<div class="filters">
+    <h6>{% trans "Filter by Genre" %}</h6>
+    <div class="list-group">
+        <a class="list-group-item{% if not facets.selected.genre %} active{% endif %}" href="{% append_to_query genre="" page="" %}">{% trans "ALL" %}</a>
+        {% for cat in facets.categories.genres %}
+            <a class="list-group-item{% if facets.selected.genre == cat %} active{% endif %}" href="{% append_to_query genre=cat.pk page="" %}">{{ cat }}</a>
+        {% endfor %}
+    </div>
+
+    <h6>{% trans "Filter by Director" %}</h6>
+    <div class="list-group">
+        <a class="list-group-item{% if not facets.selected.director %} active{% endif %}" href="{% append_to_query director="" page="" %}">{% trans "ALL" %}</a>
+        {% for cat in facets.categories.directors %}
+            <a class="list-group-item{% if facets.selected.director == cat %} active{% endif %}" href="{% append_to_query director=cat.pk page="" %}">{{ cat }}</a>
+        {% endfor %}
+    </div>
+
+    <h6>{% trans "Filter by Actor" %}</h6>
+    <div class="list-group">
+        <a class="list-group-item{% if not facets.selected.actor %} active{% endif %}" href="{% append_to_query actor="" page="" %}">{% trans "ALL" %}</a>
+        {% for cat in facets.categories.actors %}
+            <a class="list-group-item{% if facets.selected.actor == cat %} active{% endif %}" href="{% append_to_query actor=cat.pk page="" %}">{{ cat }}</a>
+        {% endfor %}
+    </div>
+
+    <h6>{% trans "Filter by Rating" %}</h6>
+    <div class="list-group">
+        <a class="list-group-item{% if not facets.selected.rating %} active{% endif %}" href="{% append_to_query rating="" page="" %}">{% trans "ALL" %}</a>
+        {% for r_val, r_display in facets.categories.ratings %}
+            <a class="list-group-item{% if facets.selected.rating.0 == r_val %} active{% endif %}" href="{% append_to_query rating=r_val page="" %}">{{ r_display }}</a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+<div class="movie_list">
+    {% for movie in movie_list %}
+        <div class="movie">
+            <h3>{{ movie.title }}</h3>
+        </div>
+    {% endfor %}
+</div>
+(% endblock %}

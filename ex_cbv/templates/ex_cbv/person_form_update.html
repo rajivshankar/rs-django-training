@@ -1,6 +1,9 @@
-<!DOCTYPE html>
-<form action="{% url 'cbv:person_update' person_detail.id %}" method='post'>
-    {% csrf_token %}
-    {{ form.as_p }}
-<input type="submit" value="Modify"/>
-</form>
+{% extends "base.html" %}
+{% block sidebar %}{% endblock %}
+{% block content %}
+    <form action="{% url 'cbv:person_update' person_detail.id %}" method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+    <input type="submit" value="Modify"/>
+    </form>
+{% endblock %}
