@@ -4,6 +4,7 @@
 *.orig
 *.xmi
 *~
+requirements - BKUP.txt
 .project
 .pydevproject
 /exercises/local_settings.py
