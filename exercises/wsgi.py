@@ -7,14 +7,12 @@ For more information on this file, see
 https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 """
 
-#commented due to Heroku
-#import os
+import os
 
 from django.core.wsgi import get_wsgi_application
 from dj_static import Cling
 
-#commented due to Heroku
-#os.environ.setdefault("DJANGO_SETTINGS_MODULE", "exercises.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "exercises.settings")
 
 #commented due to Heroku
 #application = get_wsgi_application()
