@@ -1,7 +1,9 @@
 {# templates/movies/movie_list.html #}
+{% extends "base_two_columns.html" %}
 {% load i18n utility_tags %}
 
 {% block sidebar %}
+
 <div class="filters">
     <h6>{% trans "Filter by Genre" %}</h6>
     <div class="list-group">
@@ -35,8 +37,11 @@
         {% endfor %}
     </div>
 </div>
+
 {% endblock %}
+
 {% block content %}
+
 <div class="movie_list">
     {% for movie in movie_list %}
         <div class="movie">
@@ -44,4 +49,31 @@
         </div>
     {% endfor %}
 </div>
+
+{% if object_list.has_other_pages %}
+    <ul class="pagination">
+        {% if object_list.has_previous %}
+            <li><a href="{% append_to_query page=object_list.previous_page_number %}">&laquo;</a></li>
+        {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+        {% for page_number in object_list.paginator.page_range %}
+            (% if page_number == object_list.number %}
+                <li class="active">
+                    <span>{{ page_number }}<span class="sr-only">
+                        {current)</span></span>
+            {% else %}
+                <li><a href="{% append_to_query page=page_number %}"></a></li>
+            {% endif %}
+        (% endfor %}
+        {% if object_list.has_next %}
+            <li><a href="{% append_to_query page=object_list.next_page_number%}">
+                &raquo;
+            </a></li>
+        {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+{% endif %}
+
 (% endblock %}
