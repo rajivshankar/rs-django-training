@@ -1,0 +1,24 @@
+{# templates/locations/location_list.html #}
+{% extends "base_new.html" %}
+
+{% block content %}
+    <h2>{{ location_title }}</h2>
+    {% if object_list %}
+        {% for location in object_list %}
+            <div class="list-group">
+                <a href="{% url 'locations:detail' location.id %}"
+                    class="list-group-item ">
+                    <span><img src="{{ location.small_image.url }}" 
+                            class="img-thumbnail" 
+                            alt="{{ location.title|escape }}" 
+                            width="240" 
+                            height="160">
+                    </span>
+                    {{ location.title|escape }}
+                </a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No locations found</p>
+    {% endif %}
+{% endblock %}

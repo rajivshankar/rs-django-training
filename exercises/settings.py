@@ -74,6 +74,8 @@ INSTALLED_APPS = (
     'quotes',
     'bulletin_board',
     'movies',
+    'locations',
+    'myauth',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -98,10 +100,14 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.core.context_processors.i18n',
+                'django.core.context_processors.media',
+                'django.core.context_processors.static',
+                'django.core.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -137,7 +143,8 @@ USE_L10N = True
 USE_TZ = True
 
 # Parse database configuration from $DATABASE_URL - Heroku
-DATABASES['default'] =  dj_database_url.config()
+DEFAULT_DB_URL = "postgres://upwhkfhywlyiza:FYsjphCJkK8EUjQ5BTjS_4DMwe@ec2-54-204-0-120.compute-1.amazonaws.com:5432/d2e5257lo805k1"
+DATABASES['default'] =  dj_database_url.config(default=DEFAULT_DB_URL)
 
 # Enable Connection Pooling (if desired) - Heroku
 DATABASES['default']['ENGINE'] = 'django_postgrespool'
@@ -152,6 +159,8 @@ ALLOWED_HOSTS = ['*']
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/%s/' % get_git_changeset(PROJECT_PATH)
+
+MEDIA_URL = '/media/'
 
 LANGUAGE_CODE = 'en'
 

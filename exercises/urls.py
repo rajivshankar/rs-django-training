@@ -13,11 +13,13 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import include, url
+from django.conf.urls import include, url, patterns
 from django.contrib import admin
 from django.views.generic.base import TemplateView
+from django.conf import settings
+from django.contrib.auth import views as auth_views
 
-urlpatterns = [
+urlpatterns =  [
                 url(r'^$',
                     TemplateView.as_view(template_name='home.html'),
                     name='home',
@@ -69,4 +71,22 @@ urlpatterns = [
                                          namespace='movies',
                                          app_name='movies')
                     ),
-               ]
+                url(r'^js-settings/$','utils.views.render_js',
+                    {'template_name':'settings.js',},
+                    name='js_settings'
+                    ),
+                url(r'^locations/', include('locations.urls',
+                                           namespace='locations',
+                                           app_name='locations')
+                    ),
+                url(r'^user/', include('myauth.urls',
+                                      namespace='myauth',
+                                      app_name='myauth')
+                    ),
+                ]
+
+# to serve the media files, the code below has been added
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes':True}),
+)

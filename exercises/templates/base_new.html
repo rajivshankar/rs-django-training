@@ -1,0 +1,64 @@
+{% block doctype %}<!DOCTYPE html>{% endblock %}
+{% load i18n %}
+{% load staticfiles %}
+
+<html lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>{% block title %}{% endblock %}{% trans "My Website" %}</title>
+        <link rel="icon" href="{{ STATIC_URL }}site/img/favicon.ico" type="image/png" />
+        
+        {% block meta_tags %}{% endblock %}
+    
+        <!-- Bootstrap -->
+        <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}site/css/style.css" />
+    
+        {% block stylesheet %}{% endblock %}
+           
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    
+        <script src="{% url 'js_settings' %}"></script>
+    
+        {% block js %}{% endblock %}
+    
+        {% block extrahead %}{% endblock %}
+    </head>
+    <body class="{% block bodyclass %}{% endblock %}">
+        {% block page %}
+            <div class="wrapper">
+                <div id="header" class="clearfix">
+                    {% block header_navigation %}
+                        {% include "main_nav_bar.html" %}
+                        <!-- Change it later to -->
+                        {# {% include "utils/header_navigation.html" %} #}
+                    {% endblock %}
+                    {% block language_chooser %}
+                        {# {% include "utils/language_chooser.html" %} #}
+                    {% endblock %}
+                </div>
+                <div id="content" class="container clearfix">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+                <div id="footer" class="clearfix">
+                    {% block footer_navigation %}
+                        {# {% include "utils/footer_navigation.html" %} #}
+                    {% endblock %}
+                </div>
+            </div>
+        {% endblock%}
+        {% block extrabody %}{% endblock %}
+    </body> 
+</html>
